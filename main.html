@@ -16,13 +16,16 @@
       var month = String(now.getMonth() + 1).padStart(2, "0");
       var day = String(now.getDate()).padStart(2, "0");
 
-      // Format the time values with leading zeros
-      var hours = String(now.getHours()).padStart(2, "0");
+      // Format the time values with leading zeros and AM/PM
+      var hours = now.getHours();
+      var amPm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12; // Convert 0 to 12
       var minutes = String(now.getMinutes()).padStart(2, "0");
       var seconds = String(now.getSeconds()).padStart(2, "0");
 
-      // Create the date and time string in the format YYYY-MM-DD HH:MM:SS
-      var dateTimeString = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+      // Create the date and time string in the format YYYY-MM-DD HH:MM:SS AM/PM
+      var dateTimeString = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds + " " + amPm;
 
       // Update the timer element with the new date and time string
       timerElement.textContent = dateTimeString;
