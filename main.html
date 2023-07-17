@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <title>Date Timer</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <h1 id="timer"></h1>
 
+  <script>
+    function updateTimer() {
+      var now = new Date();
+      var timerElement = document.getElementById("timer");
+
+      // Format the time values with leading zeros
+      var hours = String(now.getHours()).padStart(2, "0");
+      var minutes = String(now.getMinutes()).padStart(2, "0");
+      var seconds = String(now.getSeconds()).padStart(2, "0");
+
+      // Create the time string in the format HH:MM:SS
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      // Update the timer element with the new time string
+      timerElement.textContent = timeString;
+    }
+
+    // Call the updateTimer function every second (1000 milliseconds)
+    setInterval(updateTimer, 1000);
+  </script>
 </body>
-
 </html>
