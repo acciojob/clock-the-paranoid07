@@ -11,16 +11,21 @@
       var now = new Date();
       var timerElement = document.getElementById("timer");
 
+      // Format the date values with leading zeros
+      var year = String(now.getFullYear()).padStart(4, "0");
+      var month = String(now.getMonth() + 1).padStart(2, "0");
+      var day = String(now.getDate()).padStart(2, "0");
+
       // Format the time values with leading zeros
       var hours = String(now.getHours()).padStart(2, "0");
       var minutes = String(now.getMinutes()).padStart(2, "0");
       var seconds = String(now.getSeconds()).padStart(2, "0");
 
-      // Create the time string in the format HH:MM:SS
-      var timeString = hours + ":" + minutes + ":" + seconds;
+      // Create the date and time string in the format YYYY-MM-DD HH:MM:SS
+      var dateTimeString = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
 
-      // Update the timer element with the new time string
-      timerElement.textContent = timeString;
+      // Update the timer element with the new date and time string
+      timerElement.textContent = dateTimeString;
     }
 
     // Call the updateTimer function every second (1000 milliseconds)
